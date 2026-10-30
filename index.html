@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学習系プログラミング教室 つくプロ | 受講受付中！</title>
+    <style>
+        /* 基本設定 */
+        :root {
+            --primary-color: #2b7a78;
+            --secondary-color: #3aaf9f;
+            --accent-color: #ff6b6b;
+            --bg-color: #f7f9fb;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --light-text: #666666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ヘッダー */
+        .top-banner {
+            background-color: var(--accent-color);
+            color: #fff;
+            text-align: center;
+            padding: 8px 0;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .logo span {
+            font-size: 0.8rem;
+            color: var(--light-text);
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* メインビジュアル */
+        .hero {
+            background: linear-gradient(135deg, #def2f1 0%, #3aaf9f 100%);
+            color: #17252a;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .hero p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        /* セクション共通 */
+        section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+        }
+
+        /* 得意の入り口 */
+        .likes-list {
+            background: #eef7f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .likes-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+        }
+
+        .likes-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-top: 15px;
+        }
+
+        /* 育む力 (3つのポイント) */
+        .three-points {
+            margin: 25px 0;
+        }
+
+        .point-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            background: #f0f7f7;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .point-number {
+            background: var(--primary-color);
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* 代表プロフィール */
+        .profile {
+            background-color: #fff;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .profile-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .profile-text p {
+            margin-bottom: 12px;
+        }
+
+        .profile-footer {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            font-size: 0.95rem;
+            color: var(--light-text);
+        }
+
+        /* CTAボタン */
+        .cta-section {
+            text-align: center;
+            padding: 40px 20px 80px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        /* フッター */
+        footer {
+            background-color: #17252a;
+            color: #a3c1ad;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* レスポンシブ調整 */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                gap: 12px;
+                font-size: 0.9rem;
+            }
+
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+
+            section {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- アナウンスバナー -->
+    <div class="top-banner">
+        受講受付中！
+    </div>
+
+    <!-- ヘッダー / ナビゲーション -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span>学習系プログラミング教室</span>
+                <h1>つくプロ</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">ホーム</a></li>
+                    <li><a href="#news">お知らせ</a></li>
+                    <li><a href="#course">コース紹介</a></li>
+                    <li><a href="#access">アクセス</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- メインビジュアル -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>休みの日の過ごし方、<br>プレイヤーで終わりますか？<br>クリエーターになりますか？</h2>
+            <p>ゲームに夢中になって気が付くと一日が終わっているという経験はありませんか？</p>
+            <p>そのゲームも、誰かが作ったプログラムで動いています。プログラムが分かるとゲームの見え方が変わり、休みの過ごし方も変わるかも知れません。</p>
+        </div>
+    </section>
+
+    <!-- 特徴・思い -->
+    <section>
+        <div class="card">
+            <p>運動が得意な人、絵を描くのが得意な人、計算が得意な人…自分の得意はなんだろう？</p>
+            
+            <ul class="likes-list">
+                <li>考えるのが好き</li>
+                <li>創るのが好き</li>
+                <li>効率よく作業するのが好き</li>
+            </ul>
+
+            <p>こんなことが好きな人はプログラミングも好きになるかも。<br><strong>”好き”は”得意の入り口”です。</strong><br>得意が増えると自分に自信がつきます。</p>
+        </div>
+    </section>
+
+    <!-- つくプロのめざすもの -->
+    <section>
+        <h2 class="section-title">つくプロのめざすもの</h2>
+        <div class="card">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px; text-align: center;">”プログラミングにチャレンジしたい”を応援!</h3>
+            <p>プログラミングは、入り口がたくさん増えて始めやすくなりました。だからこそ、自分に向いているか試してみませんか？</p>
+            <br>
+            <p>つくプロは、本格的にプログラミング言語を学びたい人には物足りないかも知れません。ゲームを作ったりロボットを動かす派手さもありませんが、プログラミングの基本や考え方をしっかりと伝えていきます。</p>
+            <br>
+            <p>この教室で学んだ方々が、自分自身で、お金をかけずに教科書やインターネットを活用してプログラミングのスキルを磨ける”力”を身に着られることを目指しています。生成AIによるバイブコーディングで誰でもプログラムが書ける時代、プログラミングの基本的な知識があるともっと効率的に使いこなせます。</p>
+            <br>
+            <p>プログラミングがプロのものではなく、誰でも気軽に楽しめるものにしたい、プログラミングの裾野を広げたいと願っています。</p>
+        </div>
+    </section>
+
+    <!-- つくプロで育む力 -->
+    <section>
+        <h2 class="section-title">つくプロで育む力</h2>
+        <div class="card">
+            <p>今の小中学生、そして私たち大人は、生成AIの普及によって産業構造が大きく変わり、職業の淘汰が進む激動の時代を生きています。その変化のスピードは、かつて自動車や家電製品が普及した時代
